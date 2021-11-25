@@ -4,12 +4,12 @@ one:
   Title: MyString
   Price: 1
   Listing_Type: MyString
-  Description: MyString
+  Description: MyText
   Status: MyString
 
 two:
   Title: MyString
   Price: 1
   Listing_Type: MyString
-  Description: MyString
+  Description: MyText
   Status: MyString
