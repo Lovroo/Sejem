@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :Listing_Type %>
-    <%= form.text_field :Listing_Type %>
+    <%= form.select :Listing_Type, [['Vrsta ponudbe', nil], 'Prodam', 'Kupim', 'Podarim'] %>
   </div>
 
   <div class="field">
@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= form.label :Status %>
-    <%= form.text_field :Status %>
+    <%= form.select :Status, [['Vrsta ponudbe', nil], 'Novo', 'Rabljeno'] %>
   </div>
 
   <div class="actions">
