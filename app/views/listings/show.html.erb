@@ -1,26 +1,31 @@
 <p>
-  <strong>Title:</strong>
+  <strong>Naslov oglasa</strong>
   <%= @listing.Title %>
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @listing.Price %>
+  <strong>Cena</strong>
+  <%= @listing.Price %>€
 </p>
 
 <p>
-  <strong>Listing type:</strong>
+  <strong>Vrsta ponudbe</strong>
   <%= @listing.Listing_Type %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Opis</strong>
   <%= @listing.Description %>
 </p>
 
 <p>
-  <strong>Status:</strong>
+  <strong>Stanje izdelka</strong>
   <%= @listing.Status %>
+</p>
+
+<p>
+  <strong>Prodajalec</strong>
+  <%= @listing.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
