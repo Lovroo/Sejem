@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_27_171234) do
+ActiveRecord::Schema.define(version: 2021_11_27_173127) do
 
-  create_table "listings", force: :cascade do |t|
-    t.string "Title"
-    t.integer "Price"
-    t.string "Listing_Type"
-    t.text "Description"
-    t.string "Status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+# Could not dump table "listings" because of following StandardError
+#   Unknown type 'reference' for column 'user_id'
 
   create_table "oglasis", force: :cascade do |t|
     t.string "naslov"
