@@ -1,20 +1,22 @@
 module ListingsHelper
   def display_listing_links(listing)
-    html = "<td>#{link_to 'Show', listing }</td>"
+    capture do
+    concat "<td>#{link_to 'Show', listing }</td>".html_safe
     if current_user == listing.user
-      html +=  "<td>#{link_to 'Edit', edit_listing_path(listing)}</td>"
-      html += "<td>#{link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }} </td>"
+      concat "<td>#{link_to 'Edit', edit_listing_path(listing)}</td>".html_safe
+      concat "<td>#{link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }} </td>".html_safe
     end
-    html.html_safe
-  end
+    end
+    end
   def display_listing_show_links(listing)
-    html = ""
+    capture do
+    concat ""
     if current_user == listing.user
-    html +=  link_to 'Edit', edit_listing_path(listing)
-    html += '|'
+      concat link_to 'Edit', edit_listing_path(listing)
+      concat '|'
     end
-    html += link_to 'Back', listings_path
-  html.html_safe
-  end
+    concat link_to 'Back', listings_path
+    end
+    end
 end
 

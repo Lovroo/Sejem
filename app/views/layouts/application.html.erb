@@ -12,7 +12,9 @@
 
   <body>
   <div class="navbar">
-<%= display_navbar_links %>
+    <%= link_to "Domov", root_path %>
+    <%= link_to "Vsi oglasi", listings_path %>
+  <%= display_navbar_session_links %>
   </div>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
