@@ -12,17 +12,18 @@
 
 ActiveRecord::Schema.define(version: 2021_11_27_173127) do
 
-# Could not dump table "listings" because of following StandardError
-#   Unknown type 'reference' for column 'user_id'
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
-  create_table "oglasis", force: :cascade do |t|
-    t.string "naslov"
-    t.integer "cena"
-    t.string "vrsta_oglasa"
-    t.string "opis"
-    t.string "stanje"
+  create_table "listings", force: :cascade do |t|
+    t.string "Title"
+    t.integer "Price"
+    t.string "Listing_Type"
+    t.text "Description"
+    t.string "Status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,4 +38,5 @@ ActiveRecord::Schema.define(version: 2021_11_27_173127) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "listings", "users"
 end
