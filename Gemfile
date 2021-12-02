@@ -13,6 +13,16 @@ gem 'puma', '~> 5.0'
 gem 'devise'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
+#Gem for countries and regions
+gem 'country_state_select'
+#Gem with data for city state
+gem 'city-state'
+#Jquery gem
+gem 'jquery-rails'
+#Chosen gem
+gem 'chosen-rails'
+#Simple forms gem
+gem 'simple_form'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

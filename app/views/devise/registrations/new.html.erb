@@ -1,11 +1,49 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autocomplete: 'username' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autocomplete: 'name' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surname %><br />
+    <%= f.text_field :surname, autocomplete: 'surname' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :tel_number, autocomplete: 'tel_number' %>
+  </div>
+
+  <div class="field">
+    <!-- Country -->
+    <%= label_tag :country %>
+    <%= select_tag :country, options_for_select(CS.countries.map { |c| [c[1], c[0]] } ) %>
+  </div>
+
+  <div class="field">
+    <!-- State -->
+    <%= label_tag :state %>
+    <%= select_tag :state, options_for_select([]) %>
+  </div>
+
+  <div class="field">
+    <!-- City -->
+    <%= label_tag :city %>
+    <%= select_tag :city, options_for_select([]) %>
   </div>
 
   <div class="field">
@@ -24,6 +62,8 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
+
