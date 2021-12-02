@@ -34,13 +34,3 @@ document.addEventListener("turbolinks:load", function(){
         })
     })
 })
-    var city = document.getElementById("hometown");
-
-// Clear the options in the select box
-    while (city.firstChild) city.removeChild(city.firstChild);
-
-// Add a placeholder
-    var placeholder = document.createElement("option");
-    placeholder.text = "Choose a city";
-    placeholder.value = "";
-    city.appendChild(placeholder);
