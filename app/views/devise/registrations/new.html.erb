@@ -1,5 +1,4 @@
 <h2>Sign up</h2>
-
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -29,21 +28,18 @@
   </div>
 
   <div class="field">
-    <!-- Country -->
-    <%= label_tag :country %>
-    <%= select_tag :country, options_for_select(CS.countries.map { |c| [c[1], c[0]] } ) %>
+    <%= f.label :country,label_tag: :country %>
+    <%= f.select :country, options_for_select(CS.countries.map { |c| [c[1], c[0]] } )%>
   </div>
 
   <div class="field">
-    <!-- State -->
-    <%= label_tag :state %>
-    <%= select_tag :state, options_for_select([]) %>
+    <%= f.label :state, label_tag: :state %>
+    <%= f.select :state, options_for_select([]) %>
   </div>
 
   <div class="field">
-    <!-- City -->
-    <%= label_tag :city %>
-    <%= select_tag :city, options_for_select([]) %>
+    <%= f.label :city,label_tag: :city %>
+    <%= f.select :city, options_for_select([]) %>
   </div>
 
   <div class="field">
