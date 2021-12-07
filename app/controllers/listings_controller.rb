@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[index show]
-  before_action :authorize_user!, only: %i[edit update destroy]
+  before_action :authorize_user!, except: %i[index show]
   # GET /listings or /listings.json
   def index
     @listings = Listing.all
@@ -67,4 +67,9 @@ class ListingsController < ApplicationController
     def listing_params
       params.require(:listing).permit(:Title, :Price, :Listing_Type, :Description, :Status)
     end
+
+  def authorize_user!
+    redirect_back fallback_location: root_path, alert: 'Nimate dostopa do tega oglasa!'unless current_user == @listing.user
+    current_user == @listing.user
+  end
 end
