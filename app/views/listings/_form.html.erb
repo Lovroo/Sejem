@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :Listing_Type %>
-    <%= form.select :Listing_Type, [['Vrsta ponudbe', nil], 'Prodam', 'Kupim', 'Podarim'], required: true %>
+    <%= form.select :Listing_Type, [['Vrsta ponudbe', nil, {:disabled => true}], 'Prodam', 'Kupim', 'Podarim'], required: true %>
   </div>
 
   <div class="field">
@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= form.label :Status %>
-    <%= form.select :Status, [['Vrsta ponudbe', nil], 'Novo', 'Rabljeno'], required: true %>
+    <%= form.select :Status, [['Vrsta ponudbe', nil, {:disabled => true}], 'Novo', 'Rabljeno'], required: true %>
   </div>
 
   <div class="actions">
