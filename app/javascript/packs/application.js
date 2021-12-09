@@ -24,4 +24,3 @@ ActiveStorage.start()
 //= require chosen-jquery
 //= require country_state_select
 //= require bootstrap
-//= require channels
