@@ -21,7 +21,7 @@
         <td><%= listing.Listing_Type %></td>
         <td><%= listing.Description %></td>
         <td><%= listing.Status %></td>
-        <td><%= listing.user.email %></td>
+        <td><%= listing.user.username || 'Anonimen prodajalec' %></td>
         <%= display_listing_links(listing) %>
       </tr>
     <% end %>

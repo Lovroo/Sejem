@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[index show]
-  before_action :authorize_user!, except: %i[index show]
+  before_action :authorize_user!, only: %i[edit update destroy]
   # GET /listings or /listings.json
   def index
     @listings = Listing.all
@@ -58,7 +58,7 @@ class ListingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+      # Use callbacks to share common setup or constraints between actions.
     def set_listing
       @listing = Listing.find(params[:id])
     end
@@ -69,7 +69,6 @@ class ListingsController < ApplicationController
     end
 
   def authorize_user!
-    redirect_back fallback_location: root_path, alert: 'Nimate dostopa do tega oglasa!'unless current_user == @listing.user
-    current_user == @listing.user
+    redirect_back fallback_location: root_path, alert: 'Nimate dostopa do te strani.' unless current_user == @listing.user
   end
 end
