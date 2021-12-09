@@ -25,7 +25,7 @@
 
 <p>
   <strong>Prodajalec</strong>
-  <%= @listing.user.email %>
+  <%= @listing.user.username || 'Anonimen prodajalec' %>
 </p>
 
 <%= display_listing_show_links(@listing) %>

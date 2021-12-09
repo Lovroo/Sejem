@@ -8,6 +8,14 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+// CSS
+import 'scss/site'
+// JS
+import('js/site')
+// Images
+const images = require.context('../images', true)
+const imagePath = (name) => images(name, true)
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -15,3 +23,5 @@ ActiveStorage.start()
 //= require jquery
 //= require chosen-jquery
 //= require country_state_select
+//= require bootstrap
+//= require channels
