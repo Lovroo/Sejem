@@ -17,7 +17,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :Price %>
+    <%= form.label :Category %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Cena_v_€ %>
     <%= form.number_field :Price, required: true %>
   </div>
 

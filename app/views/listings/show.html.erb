@@ -28,4 +28,9 @@
   <%= @listing.user.username || 'Anonimen prodajalec' %>
 </p>
 
+<p>
+  <strong>Kategorija</strong>
+  <%= @listing.category.name || 'Brez kategorije' %>
+</p>
+
 <%= display_listing_show_links(@listing) %>
