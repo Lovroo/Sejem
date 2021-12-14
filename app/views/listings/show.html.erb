@@ -32,5 +32,11 @@
   <strong>Kategorija</strong>
   <%= @listing.category.name || 'Brez kategorije' %>
 </p>
-
+<p>
+  <h3>Lokacija oglasa</h3>
+    <strong>Država</strong>
+    <%= @listing.user.country %>
+    <strong>Kraj</strong>
+    <%= @listing.user.city %>
+</p>
 <%= display_listing_show_links(@listing) %>
