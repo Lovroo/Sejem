@@ -9,6 +9,9 @@
       <th>Opis</th>
       <th>Stanje izdelka</th>
       <th>Prodajalec</th>
+      <th>Kategorija</th>
+      <th>Država</th>
+      <th>Mesto</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,6 +26,8 @@
         <td><%= listing.Status %></td>
         <td><%= listing.user.username || 'Anonimen prodajalec' %></td>
         <td><%= listing.category.name || 'Brez kategorije' %></td>
+        <td><%= listing.user.country %></td>
+        <td><%= listing.user.city %></td>
         <%= display_listing_links(listing) %>
       </tr>
     <% end %>
