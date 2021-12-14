@@ -13,7 +13,7 @@
 
   <body>
   <div class="navbar">
-    <%= link_to "Domov", root_path %>
+    <%= link_to image_pack_tag('logo.png', class: 'logo-navbar'), root_path %>
     <%= link_to "Vsi oglasi", listings_path %>
   <%= display_navbar_session_links %>
   </div>
