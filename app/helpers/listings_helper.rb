@@ -15,8 +15,16 @@ module ListingsHelper
          concat link_to 'Edit', edit_listing_path(listing)
          concat ' '
         end
+      concat '<br/ ><br/ ><br/ >'.html_safe
       concat link_to 'Back', listings_path
     end
   end
-end
+  def display_message_seller
+    if current_user.id != @listing.user.id
+      concat content_tag(:h3, "Napišite sporočilo prodajalcu")
+  link_to @listing.user.username, conversations_path(sender_id: current_user.id, receiver_id: @listing.user.id), method: :post
+    end
+    end
+  end
+
 
