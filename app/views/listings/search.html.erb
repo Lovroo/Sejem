@@ -1,0 +1,34 @@
+<h1>Rezultati iskanja</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Naslov oglasa</th>
+    <th>Cena</th>
+    <th>Vrsta ponudbe</th>
+    <th>Opis</th>
+    <th>Stanje izdelka</th>
+    <th>Prodajalec</th>
+    <th>Kategorija</th>
+    <th>Država</th>
+    <th>Mesto</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @listings.each do |listing| %>
+    <tr>
+      <td><%= listing.title %></td>
+      <td><%= listing.price %>€</td>
+      <td><%= listing.listing_type %></td>
+      <td><%= listing.Description %></td>
+      <td><%= listing.status %></td>
+      <td><%= listing.user.username || 'Anonimen prodajalec' %></td>
+      <td><%= listing.category.name || 'Brez kategorije' %></td>
+      <td><%= listing.user.country %></td>
+      <td><%= listing.user.city %></td>
+      <%= display_listing_links(listing) %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

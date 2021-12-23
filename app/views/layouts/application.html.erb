@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'countries' %>
@@ -20,6 +19,10 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
         <%= link_to "Vsi oglasi", listings_path, class: 'nav-link' %>
+            </li>
+            <li>
+              <form class="d-flex" action="/search"> <input class="form-control mr-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Iskanje</button> </form>
             </li>
           </ul>
           <div class="d-flex align-items-center">
