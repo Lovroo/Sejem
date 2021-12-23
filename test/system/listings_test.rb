@@ -15,10 +15,10 @@ class ListingsTest < ApplicationSystemTestCase
     click_on "New Listing"
 
     fill_in "Description", with: @listing.Description
-    fill_in "Listing type", with: @listing.Listing_Type
-    fill_in "Price", with: @listing.Price
-    fill_in "Status", with: @listing.Status
-    fill_in "Title", with: @listing.Title
+    fill_in "Listing type", with: @listing.listing_type
+    fill_in "Price", with: @listing.price
+    fill_in "Status", with: @listing.status
+    fill_in "Title", with: @listing.title
     click_on "Create Listing"
 
     assert_text "Listing was successfully created"
@@ -30,10 +30,10 @@ class ListingsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Description", with: @listing.Description
-    fill_in "Listing type", with: @listing.Listing_Type
-    fill_in "Price", with: @listing.Price
-    fill_in "Status", with: @listing.Status
-    fill_in "Title", with: @listing.Title
+    fill_in "Listing type", with: @listing.listing_type
+    fill_in "Price", with: @listing.price
+    fill_in "Status", with: @listing.status
+    fill_in "Title", with: @listing.title
     click_on "Update Listing"
 
     assert_text "Listing was successfully updated"

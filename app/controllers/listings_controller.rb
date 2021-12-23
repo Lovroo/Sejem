@@ -11,6 +11,10 @@ class ListingsController < ApplicationController
   def show
   end
 
+  def search
+    @listings = Listing.where("Title LIKE ?", "%" + params[:q] + "%")
+  end
+
   # GET /listings/new
   def new
     @listing = Listing.new
@@ -65,7 +69,7 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:Title, :Price, :Listing_Type, :Description, :Status, :category_id)
+      params.require(:listing).permit(:title, :price, :listing_type, :description, :status, :category_id)
     end
 
   def authorize_user!

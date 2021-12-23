@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :Title %>
-    <%= form.text_field :Title, required: true %>
+    <%= form.text_field :title, required: true %>
   </div>
 
   <div class="field">
@@ -23,22 +23,22 @@
 
   <div class="field">
     <%= form.label :Cena_v_€ %>
-    <%= form.number_field :Price, required: true %>
+    <%= form.number_field :price, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :Listing_Type %>
-    <%= form.select :Listing_Type, [['Vrsta ponudbe', nil, {:disabled => true}], 'Prodam', 'Kupim', 'Podarim'], required: true %>
+    <%= form.select :listing_type, [['Vrsta ponudbe', nil, {:disabled => true}], 'Prodam', 'Kupim', 'Podarim'], required: true %>
   </div>
 
   <div class="field">
     <%= form.label :Description %>
-    <%= form.text_area :Description, required: true %>
+    <%= form.text_area :description, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :Status %>
-    <%= form.select :Status, [['Vrsta ponudbe', nil, {:disabled => true}], 'Novo', 'Rabljeno'], required: true %>
+    <%= form.select :status, [['Vrsta ponudbe', nil, {:disabled => true}], 'Novo', 'Rabljeno'], required: true %>
   </div>
 
   <div class="actions">

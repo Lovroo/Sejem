@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :cities, only: :index
   resources :states, only: :index
 
+  get 'search', to: "listings#search"
   resources :conversations, only: [:index, :create] do
     resources :messages, only: [:index, :create]
   end
