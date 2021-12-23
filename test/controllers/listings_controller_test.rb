@@ -17,7 +17,7 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create listing" do
     assert_difference('Listing.count') do
-      post listings_url, params: { listing: { Description: @listing.Description, Listing_Type: @listing.Listing_Type, Price: @listing.Price, Status: @listing.Status, Title: @listing.Title } }
+      post listings_url, params: { listing: { Description: @listing.description, Listing_Type: @listing.listing_type, Price: @listing.price, Status: @listing.status, Title: @listing.title } }
     end
 
     assert_redirected_to listing_url(Listing.last)
@@ -34,7 +34,7 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update listing" do
-    patch listing_url(@listing), params: { listing: { Description: @listing.Description, Listing_Type: @listing.Listing_Type, Price: @listing.Price, Status: @listing.Status, Title: @listing.Title } }
+    patch listing_url(@listing), params: { listing: { Description: @listing.description, Listing_Type: @listing.listing_type, Price: @listing.price, Status: @listing.status, Title: @listing.title } }
     assert_redirected_to listing_url(@listing)
   end
 
