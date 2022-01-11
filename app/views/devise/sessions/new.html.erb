@@ -6,12 +6,8 @@
 
       <div class="col_prijava">
         <div style="margin-top: 35px;">
-        <%- resource_class.omniauth_providers.each do |provider| %>
-          <%= link_to '<i class="fa fa-facebook fa-fw"></i>Sign in with Facebook'.html_safe, omniauth_authorize_path(resource_name, provider), method: :post, class:"fb gumb" %>
-        <% end %>
-        <a href="#" class="google gumb"><i class="fa fa-google fa-fw">
-        </i> Login with Google+
-        </a>
+          <%= link_to '<i class="fa fa-facebook fa-fw"></i>Sign in with Facebook'.html_safe, user_facebook_omniauth_authorize_path, method: :post, class:"fb gumb" %>
+          <%= link_to '<i class="fa fa-google fa-fw"></i>Sign in with Google'.html_safe, user_google_oauth2_omniauth_authorize_path, method: :post, class:"google gumb" %>
         </div>
       </div>
 
