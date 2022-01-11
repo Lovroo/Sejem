@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'messages/index'
   get 'conversations/index'
   resources :categories
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :listings,
   controllers: { sessions: 'users/sessions' }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
