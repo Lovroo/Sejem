@@ -1,64 +1,36 @@
-<h2>Sign up</h2>
+<div class="prijava">
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autocomplete: 'username' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autocomplete: 'name' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :surname %><br />
-    <%= f.text_field :surname, autocomplete: 'surname' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :tel_number, autocomplete: 'tel_number' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :country,label_tag: :country %>
-    <%= f.select :country, options_for_select(CS.countries.map { |c| [c[1], c[0]] } )%>
-  </div>
-
-  <div class="field">
-    <%= f.label :state, label_tag: :state %>
-    <%= f.select :state, options_for_select([]) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :city,label_tag: :city %>
-    <%= f.select :city, options_for_select([]) %>
-  </div>
-
-  <div class="field">
+    <div class="container_prijava">
+      <div class="row_prijava">
+        <h2 style="text-align:center">Registracija</h2>
+        <div class="col_prijava">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'vnos' %>
+    <%= f.label :username %>
+    <%= f.text_field :username, autocomplete: 'username', class:'vnos' %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autocomplete: 'name', class:'vnos' %>
+    <%= f.label :surname %>
+    <%= f.text_field :surname, autocomplete: 'surname', class:'vnos' %>
+    <%= f.label :phone_number %>
+    <%= f.text_field :tel_number, autocomplete: 'tel_number', class:'vnos'%>
+    <%= f.label :country,label_tag: :country, class:'vnos' %>
+    <%= f.select :country, options_for_select(CS.countries.map { |c| [c[1], c[0]] } ), class:'vnos'%>
+    <%= f.label :state, label_tag: :state, class:'vnos' %>
+    <%= f.select :state, options_for_select([]), class:'vnos' %>
+    <%= f.label :city,label_tag: :city, class:'vnos' %>
+    <%= f.select :city, options_for_select([]), class:'vnos' %><br />
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", class:'vnos' %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'vnos' %>
+    <%= f.submit "Registracija", class:'gumb'  %>
+        </div>
+      </div>
+    </div>
 <% end %>
-
-
+</div>
