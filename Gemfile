@@ -11,7 +11,7 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 #Avtentikacija uporabnikov
-gem 'devise'
+gem "devise"
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 #Gem for countries and regions
@@ -30,6 +30,12 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+#Gem for facebook auth
+gem 'omniauth-facebook'
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-oauth2'
+gem 'omniauth-google-oauth2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
