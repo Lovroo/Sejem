@@ -328,6 +328,7 @@ PLATFORMS
 DEPENDENCIES
   active_storage_validations
   aws-sdk-s3
+  bcrypt
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)

@@ -6,8 +6,8 @@
 
       <div class="col_prijava">
         <div style="margin-top: 35px;">
-          <%= link_to '<i class="fa fa-facebook fa-fw"></i>Sign in with Facebook'.html_safe, user_facebook_omniauth_authorize_path, method: :GET, class:"fb gumb" %>
-          <%= link_to '<i class="fa fa-google fa-fw"></i>Sign in with Google'.html_safe, user_google_oauth2_omniauth_authorize_path, method: :GET, class:"google gumb" %>
+          <%= link_to '<i class="fa fa-facebook fa-fw"></i>Sign in with Facebook'.html_safe, user_facebook_omniauth_authorize_path, method: :POST, class:"fb gumb" %>
+          <%= link_to '<i class="fa fa-google fa-fw"></i>Sign in with Google'.html_safe, user_google_oauth2_omniauth_authorize_path, method: :POST, class:"google gumb" %>
         </div>
       </div>
 
