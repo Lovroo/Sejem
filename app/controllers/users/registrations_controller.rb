@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
+  skip_before_action :verify_authenticity_token, :only => :create
   def new
     @user = User.new
     @country_options = country_options(['CN', 'HK'])
