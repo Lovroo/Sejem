@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-
   protected
   def country_options(pref_countries)
     country_options = []
@@ -10,7 +9,7 @@ class ApplicationController < ActionController::Base
     country_options.insert(pref_countries.length, ["---------------", "nil"])
   end
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :name, :surname, :tel_number, :country, :state, :city])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :name, :surname, :tel_number, :country, :state, :city, :provider, :uid, :full_name, :avatar_url])
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :name, :surname, :tel_number, :country, :state, :city])
   end
 end
