@@ -1,5 +1,6 @@
 <div class="prijava">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 <div class="container_prijava">
     <div class="row_prijava">
       <h2 style="text-align:center">Prijava</h2>
