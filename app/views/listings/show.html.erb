@@ -2,7 +2,11 @@
   <strong>Naslov oglasa</strong>
   <%= @listing.title %>
 </p>
-
+<% if @listing.image.present?  %>
+<p>
+  <img src="<%= (url_for(@listing.image)) %>">
+</p>
+<% end %>
 <p>
   <strong>Cena</strong>
   <%= @listing.price %>€
@@ -39,5 +43,6 @@
     <strong>Kraj</strong>
     <%= @listing.user.city %>
 </p>
+
 <%= display_message_seller %>
 <%= display_listing_show_links(@listing) %>

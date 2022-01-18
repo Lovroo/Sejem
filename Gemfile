@@ -43,7 +43,10 @@ gem 'omniauth-google-oauth2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+#Amazon image upload
+gem "aws-sdk-s3", require: false
+gem "image_processing", ">= 1.2"
+gem 'active_storage_validations'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
