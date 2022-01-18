@@ -72,11 +72,13 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
+  config.active_storage_service = :amazon_development
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
   ENV['GOOGLE_OAUTH_CLIENT_ID'] = '665558530642-agiq1lhjhovlt90590hok5av1u4lur4p.apps.googleusercontent.com'
   ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = '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'
   ENV['APP_ID'] = '464236388643961'
   ENV['APP_SECRET'] = '0ceb4bb7e2d2e58df5856d5c7584c431'
+  ENV['access_key_id'] = 'AKIASDBLTAJZIVHOQ3OX'
+  ENV['secret_access_key'] = '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'
 end

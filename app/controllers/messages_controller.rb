@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_user!
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
@@ -18,5 +19,9 @@ class MessagesController < ApplicationController
   private
   def message_params
     params.require(:message).permit(:body, :user_id)
+  end
+  def authorize_user!
+    @conversation = Conversation.find(params[:conversation_id])
+    redirect_back fallback_location: root_path, alert: 'Nimate dostopa do teh sporočil.' unless current_user.id == @conversation.sender_id
   end
 end

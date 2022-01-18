@@ -41,6 +41,10 @@
     <%= form.select :status, [['Vrsta ponudbe', nil, {:disabled => true}], 'Novo', 'Rabljeno'], required: true %>
   </div>
 
+  <div class="field">
+    <%= form.file_field :image, multiple: true, direct_upload: true, accept: 'image/png, image/jpeg'  %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
