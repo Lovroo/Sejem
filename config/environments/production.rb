@@ -125,13 +125,6 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-     ENV['GOOGLE_OAUTH_CLIENT_ID'] = '665558530642-agiq1lhjhovlt90590hok5av1u4lur4p.apps.googleusercontent.com'
-     ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = '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'
-     ENV['APP_ID'] = '464236388643961'
-    ENV['APP_SECRET'] = '0ceb4bb7e2d2e58df5856d5c7584c431'
-  ENV['AWS_SECRET_ACCESS_KEY'] = 'JTQRbpEnWiZolDJ8X+Xr7+rawb+bWvwIR7XmDRvf'
-  ENV['AWS_ACCESS_KEY_ID'] = 'AKIASDBLTAJZIVHOQ3OX'
-  ENV['S3_BUCKET_NAME'] = 'sejem-bucket'
-  ENV['AWS_REGION'] = 'us-east-1'
+
 
 end
