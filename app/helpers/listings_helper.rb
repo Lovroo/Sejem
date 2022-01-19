@@ -1,10 +1,10 @@
 module ListingsHelper
   def display_listing_links(listing)
-    concat content_tag(:td, link_to('Show' , listing))
+    concat content_tag(:a, link_to('Prikaži' , listing))
     capture do
     if current_user == listing.user
-      concat content_tag(:td, link_to('Edit', edit_listing_path(listing)))
-      concat content_tag(:td, link_to('Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }))
+      concat content_tag(:a, link_to('Uredi', edit_listing_path(listing)))
+      concat content_tag(:a, link_to('Izbriši', listing, method: :delete, data: { confirm: 'Are you sure?' }))
     end
         end
   end
