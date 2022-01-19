@@ -24,3 +24,4 @@ const imagePath = (name) => images(name, true)
 //= require chosen-jquery
 //= require country_state_select
 //= require bootstrap
+

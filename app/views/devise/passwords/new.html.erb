@@ -1,15 +1,23 @@
-<h2>Forgot your password?</h2>
-
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="form_wrapper" style="width:600px">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>Pozabljeno geslo?</h2>
+      </div>
+      <div class="row clearfix">
+        <div class="">
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email' %>
+          </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "Pošlji navodila za novo geslo", style: 'width: 300px;margin-left: 125px;border-radius: 5px;margin-bottom:25px;' %>
+  </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
-
