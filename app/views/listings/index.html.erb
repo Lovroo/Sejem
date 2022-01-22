@@ -7,7 +7,8 @@
         <ul class="w3-ul w3-card-4" style="border-radius: 10px">
           <% @categories = Category.all %>
           <% @categories.each do |category| %>
-            <li><a href="/cat?category_id=<%= category.id  %>"><%= category.name %></a></li>
+            <%q = params[:q] %>
+            <li><%= link_to category.name, {category_id: category.id, q: q}, style:'text-decoration:none;color:black'%></li>
           <% end %>
         </ul>
       </div>

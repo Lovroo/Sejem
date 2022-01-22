@@ -25,7 +25,7 @@ module ListingsHelper
   link_to @listing.user.username, conversations_path(sender_id: current_user.id, receiver_id: @listing.user.id), method: :post
     end
   end
-  def sort_link(column, title = nil, q)
+  def sort_link(column, title = nil)
     title ||= column.titleize
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     icon = sort_direction == "asc" ? "fas fa-chevron-up" : "fas fa-chevron-down"

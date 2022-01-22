@@ -5,8 +5,12 @@ class ListingsController < ApplicationController
   helper_method :sort_column, :sort_direction
   # GET /listings or /listings.json
   def index
-    @listings = Listing.all.order("#{sort_column} #{sort_direction}")
     @categories = Category.all
+    if params[:category_id]
+      @listings = Listing.where("category_id =" + params[:category_id]).order("#{sort_column} #{sort_direction}")
+    else
+      @listings = Listing.all.order("#{sort_column} #{sort_direction}")
+    end
   end
 
   # GET /listings/1 or /listings/1.json
@@ -27,7 +31,11 @@ class ListingsController < ApplicationController
   end
 
   def search
+    if params[:category_id]
+      @listings = Listing.where("category_id =" + params[:category_id] + "AND lower(Title) LIKE ?", "%" + params[:q].downcase + "%").order("#{sort_column} #{sort_direction}")
+      else
     @listings = Listing.where("lower(Title) LIKE ?", "%" + params[:q].downcase + "%").all.order("#{sort_column} #{sort_direction}")
+    end
   end
 
   # GET /listings/new
@@ -35,11 +43,6 @@ class ListingsController < ApplicationController
     @listing = Listing.new
   end
 
-  def cat
-    if params[:category_id]
-      @listings = Listing.where("category_id =" + params[:category_id]).order("#{sort_column} #{sort_direction}")
-    end
-  end
 
   # GET /listings/1/edit
   def edit
