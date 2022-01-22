@@ -1,18 +1,45 @@
-<ul>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<div class="container content">
+  <div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12", style="width: 100%">
+      <div class="card">
+        <div class="card-header">Pogovor</div>
+        <div class="card-body height3">
+          <ul class="chat-list">
   <% @messages.each do |message| %>
-    <% if message.body %>
-      <li>
-        <h4><%= message.user.username %></h4>
+    <% if message.body  %>
+                <% if  message.user_id != current_user.id %>
+                  <% message_class = 'in' %>
+                 <% else %>
+                  <% message_class = 'out' %>
+                  <% end %>
+                <li class="<%= message_class %>">
+                    <div class="chat-body">
+                      <div class="chat-message">
+                        <% if message.user.username.nil? %>
+                        <% messanger =  'Anonimen uporabnik'%>
+                        <% else %>
+                <% messanger =  message.user.username %>
+                <% end %>
+                <h5><%= messanger %> | <%= message.created_at.strftime(' %d %b %Y %H:%M:%S') %></h5>
         <p><%= message.body %></p>
+                      </div>
+                    </div>
       </li>
     <% end %>
   <% end %>
 </ul>
 
 <%= form_for [@conversation, @message] do |f| %>
-  <div class="field">
-    <%= f.text_area :body, placeholder: "Vaše sporočilo" %>
-  </div>
-
-  <%= f.submit "Pošlji" %>
+            <div class="chat-footer">
+              <%= f.text_area :body, placeholder: "Vaše sporočilo", class:'send-message-text' %>
+              <%= button_tag type: 'submit', class: 'send-message-button btn-info'  do%>
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              <% end %>
+            </div>
 <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

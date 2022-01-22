@@ -22,6 +22,6 @@ class MessagesController < ApplicationController
   end
   def authorize_user!
     @conversation = Conversation.find(params[:conversation_id])
-    redirect_back fallback_location: root_path, alert: 'Nimate dostopa do teh sporočil.' unless current_user.id == @conversation.sender_id
+    redirect_back fallback_location: root_path, alert: 'Nimate dostopa do teh sporočil.' unless current_user.id == @conversation.sender_id or current_user.id == @conversation.receiver_id
   end
 end

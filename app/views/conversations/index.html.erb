@@ -1,12 +1,25 @@
-<h1>Sporočila</h1>
-
-<ul>
+<div class="form_wrapper" style="width:600px">
+  <div class="form_container">
+    <div class="title_container">
+      <h2>Sporočila</h2>
+    </div>
+<ul id='friend-list'>
   <% @conversations.each do |conversation| %>
-    <li>
-      <%= link_to conversation.recipient(current_user).username, conversation_messages_path(conversation) %>
+    <li class='friend'>
+      <img src='https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg' />
+      <div class='name'>
+        <% if conversation.recipient(current_user).username.nil? %>
+          <% username = 'Anonimen Uporabnik' %>
+          <% else %>
+          <% username = conversation.recipient(current_user).username %>
+          <% end %>
+      <%= link_to username  , conversation_messages_path(conversation), style: 'text-decoration: none;' %>
+      </div>
       <% if !conversation.unread_message_count(current_user).zero? %>
-        (<%= conversation.unread_message_count(current_user) %>)
+        <p class="message-count"><%= conversation.unread_message_count(current_user) %></p>
       <% end %>
     </li>
   <% end %>
 </ul>
+  </div>
+</div>

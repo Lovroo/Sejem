@@ -1,10 +1,10 @@
 module ListingsHelper
   def display_listing_links(listing)
-    concat content_tag(:a, link_to('Prikaži' , listing))
+    concat content_tag(:a, link_to('Prikaži' , listing, style: 'text-decoration: none'))
     capture do
     if current_user == listing.user
-      concat content_tag(:a, link_to('Uredi', edit_listing_path(listing)))
-      concat content_tag(:a, link_to('Izbriši', listing, method: :delete, data: { confirm: 'Are you sure?' }))
+      concat content_tag(:a, link_to('Uredi', edit_listing_path(listing), style: 'text-decoration: none'))
+      concat content_tag(:a, link_to('Izbriši', listing, method: :delete, data: { confirm: 'Are you sure?' }, style: 'text-decoration: none'))
     end
         end
   end
@@ -24,7 +24,19 @@ module ListingsHelper
       concat content_tag(:h3, "Napišite sporočilo prodajalcu")
   link_to @listing.user.username, conversations_path(sender_id: current_user.id, receiver_id: @listing.user.id), method: :post
     end
+  end
+  def sort_link(column, title = nil)
+    title ||= column.titleize
+    direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+    icon = sort_direction == "asc" ? "fas fa-chevron-up" : "fas fa-chevron-down"
+    icon = column == sort_column ? icon : ""
+    if params[:q]
+      q = params[:q]
+    link_to "#{title} <span class='#{icon}'></span>".html_safe, {column: column, direction: direction, q: q}, style:'text-decoration: none;font-family: FontAwesome;color:black'
+    else
+      link_to "#{title} <span class='#{icon}'></span>".html_safe, {column: column, direction: direction}, style:'text-decoration: none;font-family: FontAwesome;color:black'
     end
+  end
   end
 
 

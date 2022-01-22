@@ -1,42 +1,67 @@
-<h1>Vsi Oglasi</h1>
-
-<table style="width:1296px;">
-  <tbody>
-    <% @listings.each do |listing| %>
-      <tr>
-        <td>
-        <div class="blog-card">
-          <div class="meta">
-            <% if listing.image.present?  %>
-              <% image_url = (url_for(listing.image)) %>
-            <% else %>
-              <% image_url = "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg  " %>
-            <% end %>
-            <div class="photo" style="background-image: url(<%= image_url %>)"></div>
-            <ul class="details">
-              <li class="author"><%= listing.user.username || 'Anonimen prodajalec' %></li>
-              <li class="date"><%= listing.created_at %></li>
-              <li class="city"><%= listing.user.city %></li>
-              <li class="listing"><%= listing.listing_type %></li>
-              <li class="status"><%= listing.status %></li>
-              <li class="tags">
-                <ul>
-                  <li><%= listing.category.name || 'Brez kategorije' %></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1><%= listing.title %></h1>
-            <h2><%= listing.price %>€</h2>
-            <p> <%= listing.description %></p>
-            <p class="read-more">
-              <%= display_listing_links(listing) %>
-            </p>
-          </div>
-        </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
+<h1>Rezultati iskanja</h1>
+<table class="main-table" style="width: 1296px;">
+  <tr >
+    <td class="left-side" style="width: 20%">
+      <div class="filtri">
+        <h5 style="text-align: center">Filtriranje oglasov</h5>
+        <ul class="w3-ul w3-card-4" style="border-radius: 10px">
+          <% @categories = Category.all %>
+          <% @categories.each do |category| %>
+            <%q = params[:q] %>
+            <li><%= link_to category.name, {category_id: category.id, q: q}, style:'text-decoration:none;color:black'%></li>
+          <% end %>
+        </ul>
+      </div>
+    </td>
+    <td class="right-side"  style="width: 80%;">
+      <table style="width: 100%;margin-left: 100px;">
+        <thead>
+        <tr>
+          <th><h5 style="font-weight: bold;">RAZVRSTI PO</h5></th>
+          <th><%= sort_link "title", "Naslov" %></th>
+          <th><%= sort_link "price", "Cena" %></th>
+          <th><%= sort_link "created_at", "Datum objave" %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @listings.each do |listing| %>
+          <tr>
+            <td>
+              <div class="blog-card">
+                <div class="meta">
+                  <% if listing.image.present?  %>
+                    <% image_url = (url_for(listing.image)) %>
+                  <% else %>
+                    <% image_url = "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" %>
+                  <% end %>
+                  <div class="photo" style="background-image: url(<%= image_url %>)"></div>
+                  <ul class="details">
+                    <li class="author"><%= listing.user.username || 'Anonimen prodajalec' %></li>
+                    <li class="date"><%= listing.created_at.strftime(' %d %b %Y %H:%M:%S')  %></li>
+                    <li class="city"><%= listing.user.city %></li>
+                    <li class="listing"><%= listing.listing_type %></li>
+                    <li class="status"><%= listing.status %></li>
+                    <li class="tags">
+                      <ul>
+                        <li><%= listing.category.name || 'Brez kategorije' %></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="description">
+                  <h1><%= listing.title %></h1>
+                  <h2><%= listing.price %>€</h2>
+                  <p> <%= listing.description %></p>
+                  <p class="read-more">
+                    <%= display_listing_links(listing) %>
+                  </p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </td>
+  </tr>
 </table>

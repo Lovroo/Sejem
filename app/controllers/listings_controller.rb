@@ -2,23 +2,47 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[index show]
   before_action :authorize_user!, only: %i[edit update destroy]
+  helper_method :sort_column, :sort_direction
   # GET /listings or /listings.json
   def index
-    @listings = Listing.all
+    @categories = Category.all
+    if params[:category_id]
+      @listings = Listing.where("category_id =" + params[:category_id]).order("#{sort_column} #{sort_direction}")
+    else
+      @listings = Listing.all.order("#{sort_column} #{sort_direction}")
+    end
   end
 
   # GET /listings/1 or /listings/1.json
   def show
+
+  end
+
+  def sortable_columns
+    ["title", "price", "created_at"]
+  end
+
+  def sort_column
+    sortable_columns.include?(params[:column]) ? params[:column] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
   def search
-    @listings = Listing.where("lower(Title) LIKE ?", "%" + params[:q].downcase + "%")
+    if params[:category_id]
+      @listings = Listing.where("category_id =" + params[:category_id] + "AND lower(Title) LIKE ?", "%" + params[:q].downcase + "%").order("#{sort_column} #{sort_direction}")
+      else
+    @listings = Listing.where("lower(Title) LIKE ?", "%" + params[:q].downcase + "%").all.order("#{sort_column} #{sort_direction}")
+    end
   end
 
   # GET /listings/new
   def new
     @listing = Listing.new
   end
+
 
   # GET /listings/1/edit
   def edit
@@ -75,4 +99,4 @@ class ListingsController < ApplicationController
   def authorize_user!
     redirect_back fallback_location: root_path, alert: 'Nimate dostopa do te strani.' unless current_user == @listing.user
   end
-end
+  end

@@ -14,6 +14,7 @@ gem 'puma', '~> 5.0'
 gem "devise"
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
+gem "font-awesome-rails"
 #Gem for countries and regions
 gem 'country_state_select'
 #Gem with data for city state

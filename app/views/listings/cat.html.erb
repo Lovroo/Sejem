@@ -7,8 +7,7 @@
         <ul class="w3-ul w3-card-4" style="border-radius: 10px">
           <% @categories = Category.all %>
           <% @categories.each do |category| %>
-            <%q = params[:q] %>
-            <li><%= link_to category.name, {category_id: category.id, q: q}%></a></li>
+            <li><a href="/cat?category_id=<%= category.id  %>"><%= category.name %></a></li>
           <% end %>
         </ul>
       </div>
@@ -18,9 +17,9 @@
         <thead>
         <tr>
           <th><h5 style="font-weight: bold;">RAZVRSTI PO</h5></th>
-          <th><%= sort_link "title", "Naslov" %></th>
-          <th><%= sort_link "price", "Cena" %></th>
-          <th><%= sort_link "created_at", "Datum objave" %></th>
+          <th><%= sort_link "name" %></th>
+          <th><%= sort_link "price" %></th>
+          <th><%= sort_link "created_at", "Added On" %></th>
         </tr>
         </thead>
         <tbody>
