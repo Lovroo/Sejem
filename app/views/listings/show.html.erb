@@ -1,48 +1,58 @@
-<p>
-  <strong>Naslov oglasa</strong>
-  <%= @listing.title %>
-</p>
-<% if @listing.image.present?  %>
-<p>
-  <img src="<%= (url_for(@listing.image)) %>">
-</p>
-<% end %>
-<p>
-  <strong>Cena</strong>
-  <%= @listing.price %>€
-</p>
 
-<p>
-  <strong>Vrsta ponudbe</strong>
-  <%= @listing.listing_type %>
-</p>
-
-<p>
-  <strong>Opis</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>Stanje izdelka</strong>
-  <%= @listing.status %>
-</p>
-
-<p>
-  <strong>Prodajalec</strong>
-  <%= @listing.user.username || 'Anonimen prodajalec' %>
-</p>
-
-<p>
-  <strong>Kategorija</strong>
-  <%= @listing.category.name || 'Brez kategorije' %>
-</p>
-<p>
-  <h3>Lokacija oglasa</h3>
-    <strong>Država</strong>
-    <%= @listing.user.country %>
-    <strong>Kraj</strong>
-    <%= @listing.user.city %>
-</p>
-
-<%= display_message_seller %>
-<%= display_listing_show_links(@listing) %>
+<div class="card">
+  <div class="card__title">
+    <div class="icon">
+    <%= link_to '<i class="fa fa-arrow-left"></i>'.html_safe, listings_path %>
+    </div>
+  </div>
+  <div class="card__body">
+    <div class="half">
+      <div class="featured_text">
+        <h1><%= @listing.title %></h1>
+        <p class="sub"><%= @listing.category.name || 'Brez kategorije' %></p>
+        <p class="price"><%= @listing.price %> €</p>
+      </div>
+      <div class="image">
+        <% if @listing.image.present?  %>
+          <p>
+            <img src="<%= (url_for(@listing.image)) %>" style="width: 400px;height: 400px;" />
+          </p>
+          <% else %>
+          <p>
+            <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" style="width: 400px;
+              height: 400px;"/>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <div class="half">
+      <div class="description">
+        <p>Opis:</p>
+        <p> <%= @listing.description %></p>
+      </div>
+      <span class="stock"><i class="fa fa-pen"></i><%= @listing.listing_type %></span><br />
+      <span class="stock"><i class="fa fa-pen"></i><%= @listing.status %></span><br />
+      <span class="stock"><i class="date"></i><%= @listing.created_at.strftime(' %d %b %Y %H:%M:%S')  %></span><br />
+      <div style="margin-top: 350px">
+      <span>Država: <%= @listing.user.country %></span><br />
+      <span>Kraj: <%= @listing.user.city %></span><br />
+      <% if @listing.user.tel_number.present?  %>
+        <span>Telefonska številka prodajalca: <%= @listing.user.tel_number %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="card__footer">
+    <div class="recommend">
+      <p>Prodajalec:</p>
+      <h3> <%= @listing.user.username || 'Anonimen prodajalec' %></h3>
+    </div>
+    <% if current_user.id != @listing.user.id %>
+    <div class="action">
+      <button type="button">
+          <%= link_to 'Napišite sporočilo', conversations_path(sender_id: current_user.id, receiver_id: @listing.user.id), method: :post, style: 'color:black;text-decoration: none;' %>
+          <% end %>
+          </button>
+    </div>
+  </div>
+</div>

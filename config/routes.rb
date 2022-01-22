@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :states, only: :index
 
   get 'search', to: "listings#search"
+  get 'cat', to: "listings#cat"
   resources :conversations, only: [:index, :create] do
     resources :messages, only: [:index, :create]
   end
