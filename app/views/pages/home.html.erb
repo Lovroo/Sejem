@@ -1,7 +1,56 @@
-<h1>Domača stran - Sejem</h1>
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+  <img class="w3-image" src="https://radioprvi.rtvslo.si/wp-content/uploads/2019/07/20190707_093054-1200x731.jpg" alt="Architecture" width="1500" height="800">
+  <div class="w3-display-middle w3-margin-top w3-center">
+    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Sejem</b></span> <span class="w3-padding w3-black w3-opacity-min">Mali oglasi</span></h1>
+  </div>
+</header>
 
-<p>To je landing page - in development</p>
+<div class="w3-content w3-padding" style="max-width:1564px">
+  <div class="w3-container w3-padding-32" id="projects">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Kategorije</h3>
+  </div>
 
-<div class="Kategorije">
+  <div class="w3-row-padding">
+    <% @categories = Category.all %>
+    <% @categories.each do |category| %>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container">
+          <button class="w3-button w3-light-grey w3-block">
+            <%= link_to  category.name, "/listings?category_id=#{category.id}", style: 'text-decoration:none;color:black'%></button></div>
+      </div>
+    <% end %>
+  </div>
 
+  <div class="w3-container w3-padding-32" id="about">
+    <div style="background: lightgray;
+      padding: 50px;
+      border-radius: 25px;">
+      <a class="banner-section" href="/listings/new", style="text-decoration: none;text-align: center">
+        <div class="center-cropped">
+          <div class="description">
+            <h4 style="color:white;"> Objavi svoje rabljene stvari!</h4>
+          </div>
+          <button class="btn btn-default btn-md btn-padded" type="button">
+            Objavi mali oglas
+          </button>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="w3-container w3-padding-32" id="about">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Najnovejši oglasi</h3>
+  <% @listings.sort_by{|t| - t.created_at.to_i}.first(4).each do |listing| %>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <% if listing.image.present?  %>
+          <img src="<%= (url_for(listing.image)) %>" style="width:310px;height: 310px;" />
+      <% else %>
+          <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" style="width:310px;height: 310px;">
+      <% end %>
+      <h3><%= link_to(listing.title , listing, style: 'text-decoration: none') %></h3>
+      <p class="w3-opacity"><%= listing.category.name || 'Brez kategorije' %></p>
+      <p><%= listing.price %> €</p>
+      <p><%= listing.created_at.strftime(' %d %b %Y %H:%M:%S')  %></p>
+    </div>
+    <%end %>
+</div>
 </div>

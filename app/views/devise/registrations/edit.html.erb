@@ -64,9 +64,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Posodobite", style: 'width: 300px;margin-left: 125px;border-radius: 5px;margin-bottom:25px;' %>
+    <%= f.submit "Posodobi",method: :patch, style: 'width: 300px;margin-left: 125px;border-radius: 5px;margin-bottom:25px;' %>
   </div>
-
+<% end %>
 
  <%= button_to "Izbrišite račun", registration_path(resource_name), data: { confirm: "Ali ste prepričani?" },
                                method: :delete, style: 'margin-left: 125px;border-radius: 5px;width: 300px' %>
@@ -75,4 +75,3 @@
       </div>
     </div>
   </div>
-<% end %>
