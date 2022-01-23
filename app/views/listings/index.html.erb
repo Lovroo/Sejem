@@ -1,22 +1,22 @@
 <h1>Rezultati iskanja</h1>
 <table class="main-table" style="width: 1296px;">
   <tr >
-    <td class="left-side" style="width: 20%">
+    <td class="side right" style="width: 20%">
       <div class="filtri">
         <h5 style="text-align: center">Filtriranje oglasov</h5>
         <ul class="w3-ul w3-card-4" style="border-radius: 10px">
           <% @categories = Category.all %>
           <% @categories.each do |category| %>
             <%q = params[:q] %>
-            <li><%= link_to category.name, {category_id: category.id, q: q}, style:'text-decoration:none;color:black'%></li>
+            <li><%= link_to category.name, {category_id: category.id, q: q}%></a></li>
           <% end %>
         </ul>
       </div>
     </td>
-    <td class="right-side"  style="width: 80%;">
-      <table style="width: 100%;margin-left: 100px;">
+    <td class="side left"  style="width: 80%;">
+      <table class="right_table">
         <thead>
-        <tr>
+        <tr class="filtriranje">
           <th><h5 style="font-weight: bold;">RAZVRSTI PO</h5></th>
           <th><%= sort_link "title", "Naslov" %></th>
           <th><%= sort_link "price", "Cena" %></th>
