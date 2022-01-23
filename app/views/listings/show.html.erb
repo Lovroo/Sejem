@@ -47,12 +47,20 @@
       <p>Prodajalec:</p>
       <h3> <%= @listing.user.username || 'Anonimen prodajalec' %></h3>
     </div>
-    <% if current_user.id != @listing.user.id %>
-    <div class="action">
-      <button type="button">
+    <% if current_user == @listing.user %>
+      <div class="action">
+        <button type="button">
+          <p>Nemorete napisati sporočilo sebi!</p>
+        </button>
+    <% else %>
+      <% if current_user.present? %>
+        <div class="action">
+        <button type="button">
           <%= link_to 'Napišite sporočilo', conversations_path(sender_id: current_user.id, receiver_id: @listing.user.id), method: :post, style: 'color:black;text-decoration: none;' %>
-          <% end %>
-          </button>
+        </button>
+        </div>
+      <% end %>
     </div>
+    <% end %>
   </div>
 </div>

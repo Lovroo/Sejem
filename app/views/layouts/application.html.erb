@@ -14,26 +14,28 @@
     <%= javascript_pack_tag 'countries' %>
   </head>
 
-  <body>
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <%= link_to image_pack_tag('logo.png', class: 'navbar-brand', style: 'max-height: 90px;'), root_path %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+  <body style="margin: 0px;">
+    <div class="topnav" id="myTopnav">
+          <%= link_to image_pack_tag('logo.png', style: 'max-height: 53.5px'), root_path, style: ';padding:0px !important;' %>
               <%= link_to "Vsi oglasi", listings_path, class: 'nav-link' %>
-            </li>
             <%= display_navbar_session_links %>
-          <li class="d-flex align-items-right">
-            <form class="d-flex align-items-right" action="/search"> <input class="form-control mr-2" type="search" name="q" placeholder="Search" aria-label="Search">
+            <form class="d-flex align-items-right" action="/search", style="padding: 7px 16px;"> <input type="search" name="q" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Iskanje</button> </form>
-          </li>
-        </ul>
-        </div>
-    </nav>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    <script type="text/javascript">
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+    <div class="container" style="min-height: calc(100vh - 311px);">
     <% if flash[:notice] %>
       <p class="alert alert-success" role="alert"  style="margin-top: 25px;"><%= notice %></p>
     <% end %>
@@ -43,4 +45,63 @@
     <%= yield %>
   </div>
   </body>
+  <footer id="footer" class="footer-1" style="margin-top: 100px;">
+    <div class="main-footer widgets-dark typo-light">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="widget subscribe no-box">
+              <h5 class="widget-title">Sejem<span></span></h5>
+              <p>Projekt za predmet RPA.</p>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="widget no-box">
+              <h5 class="widget-title">Hitri povezave<span></span></h5>
+              <ul class="thumbnail-widget">
+                <li>
+                  <div class="thumb-content"><a href="/listings">Vsi oglasi</a></div>
+                </li>
+                <li>
+                  <div class="thumb-content"><a href="/admin">Admin panel</a></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="widget no-box">
+              <h5 class="widget-title">Začnite prodajati<span></span></h5>
+              <p>Objavite vaš prvi oglas.</p>
+              <a class="btn" href="/listings/new" target="_blank">Objavi!</a>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+
+            <div class="widget no-box">
+              <h5 class="widget-title">Kontaktirajte nas<span></span></h5>
+
+              <p><a href="mailto:info@domain.com" title="glorythemes">lovro.napotnik@scv.si</a></p>
+              <ul class="social-footer2">
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>Lovro Napotnik © 2021. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>
