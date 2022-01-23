@@ -3,7 +3,7 @@
 Sejem is a web app made in Ruby on rails for my class RPA.
 
 ## Live preview
-A live version of the application is hosted on https://sejem.herokuapp.com/
+A live version of the application is hosted on www.sejem.lovro.tech
 `
 ## Features
 * Account registration and login with the Devise Gem.
