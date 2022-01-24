@@ -7,5 +7,10 @@ class Listing < ApplicationRecord
   validates :description, presence: true
   validates :status, presence: true
   has_one_attached :image
-  validates :image, attached: true
+
+  def image_url
+    if image.attached?
+      image.blob.service_url
+    end
+  end
 end

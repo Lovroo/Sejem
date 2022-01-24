@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :cities, only: :index
   resources :states, only: :index
-
+  post '/presigned_url', to: 'direct_upload#create'
   get 'search', to: "listings#search"
   get 'cat', to: "listings#cat"
   resources :conversations, only: [:index, :create] do
