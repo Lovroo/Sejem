@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show edit update destroy]
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show search]
   before_action :authorize_user!, only: %i[edit update destroy]
   helper_method :sort_column, :sort_direction
   # GET /listings or /listings.json
@@ -15,7 +15,6 @@ class ListingsController < ApplicationController
 
   # GET /listings/1 or /listings/1.json
   def show
-
   end
 
   def sortable_columns
