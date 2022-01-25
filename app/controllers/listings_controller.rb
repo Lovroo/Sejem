@@ -35,7 +35,10 @@ class ListingsController < ApplicationController
       else
     @listings = Listing.where("lower(Title) LIKE ?", "%" + params[:q].downcase + "%").all.order("#{sort_column} #{sort_direction}")
     end
-  end
+    if params[:q && :category_id]
+      @listings = Listing.where("category_id =" + params[:category_id] + "AND lower(Title) LIKE ?", "%" + params[:q].downcase + "%").order("#{sort_column} #{sort_direction}")
+      end
+    end
 
   # GET /listings/new
   def new
