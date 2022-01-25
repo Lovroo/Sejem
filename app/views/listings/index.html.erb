@@ -36,7 +36,7 @@
                   <% end %>
                   <div class="photo" style="background-image: url(<%= image_url %>)"></div>
                   <ul class="details">
-                    <li class="author"><%= listing.user.username || 'Anonimen prodajalec' %></li>
+                    <li class="author"><%= listing.user.username || listing.user.email %></li>
                     <li class="date"><%= listing.created_at.strftime(' %d %b %Y %H:%M:%S')  %></li>
                     <li class="city"><%= listing.user.city %></li>
                     <li class="listing"><%= listing.listing_type %></li>

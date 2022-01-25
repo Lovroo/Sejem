@@ -17,7 +17,7 @@
                     <div class="chat-body">
                       <div class="chat-message">
                         <% if message.user.username.nil? %>
-                        <% messanger =  'Anonimen uporabnik'%>
+                        <% messanger =  message.user.email%>
                         <% else %>
                 <% messanger =  message.user.username %>
                 <% end %>
