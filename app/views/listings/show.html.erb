@@ -45,7 +45,7 @@
   <div class="card__footer">
     <div class="recommend">
       <p>Prodajalec:</p>
-      <h3> <%= @listing.user.username || 'Anonimen prodajalec' %></h3>
+      <h3> <%= @listing.user.username || @listing.user.email %></h3>
     </div>
     <% if current_user == @listing.user %>
       <div class="action">
