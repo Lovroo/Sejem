@@ -32,9 +32,10 @@ module ListingsHelper
     icon = column == sort_column ? icon : ""
     if params[:q]
       q = params[:q]
-    link_to "#{title} <span class='#{icon}'></span>".html_safe, {column: column, direction: direction, q: q}, style:'text-decoration: none;font-family: FontAwesome;color:black'
+      cat = params[:category_id]
+    link_to "#{title} <span class='#{icon}'></span>".html_safe, {column: column, direction: direction, q: q, category_id: cat}, style:'text-decoration: none;font-family: FontAwesome;color:black'
     else
-      link_to "#{title} <span class='#{icon}'></span>".html_safe, {column: column, direction: direction}, style:'text-decoration: none;font-family: FontAwesome;color:black'
+      link_to "#{title} <span class='#{icon}'></span>".html_safe, {column: column, direction: direction, q: q, category_id: cat}, style:'text-decoration: none;font-family: FontAwesome;color:black'
     end
   end
   end
